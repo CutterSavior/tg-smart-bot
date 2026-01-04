@@ -1,0 +1,32 @@
+bot:
+  token: ${BOT_TOKEN}          # 從環境變數帶入
+  superusers: [12345678]       # 誰可以 /reload
+
+phrases:
+  path: "phrases.ini"
+  encoding: ["utf-8-sig", "gbk", "gb2312"]
+  min_similarity: 0.18         # 低於此值直接回「找不到」
+
+intent:
+  # 關鍵字、權重、必要欄位、等待分鐘數
+  recharge:
+    keywords: ["充值","儲值","存款","入金","上分","轉帳","支付"]
+    required: ["帳號","金額","截圖"]
+    wait_minutes: 3
+  withdraw:
+    keywords: ["提款","取款","出金","提現","領取"]
+    required: ["帳號","金額","銀行卡"]
+    wait_minutes: 5
+  promo:
+    keywords: ["優惠","活動","紅包","禮金","返水","彩金","首存"]
+    required: ["帳號","活動名稱"]
+  account:
+    keywords: ["登入","登錄","密碼","忘記","帳號","註冊","綁定"]
+    required: ["帳號","問題描述"]
+
+similarity:
+  keyword_weight: 0.50
+  front_match_weight: 0.20
+  length_weight: 0.10
+  sequence_weight: 0.05
+  base_string_weight: 0.15
